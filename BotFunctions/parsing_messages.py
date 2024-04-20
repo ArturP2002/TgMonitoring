@@ -10,6 +10,7 @@ def message_parsing(client_tg, target_group, offset):
     :param target_group: целевой telegram-канал(чат)
     :param offset: необходимая для работы функции GetHistoryRequest переменная
     """
+    id_list = []
     while True:
         history = client_tg(GetHistoryRequest(
             peer=target_group,
@@ -28,9 +29,10 @@ def message_parsing(client_tg, target_group, offset):
         messages = history.messages
         for message in messages:
             all_messages.append(message.message)
+            id_list.append(message.id)
         offset = messages[len(messages) - 1].id
         if total_count_limit != 0 and total_messages >= total_count_limit:
            break
 
     print('\nСохраняем данные в файл...')
-    parsing_chats_save(all_messages)
+    parsing_chats_save(all_messages, id_list)

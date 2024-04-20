@@ -34,5 +34,4 @@ def get_last_msg():
     row = 0
     column = 0
     element = retrieve_csv_element(csv_file_chats, row, column)
-    print(element)
     return element
