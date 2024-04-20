@@ -34,10 +34,10 @@ def monitoring(message: Message):
     for i_word in key_words:
         for j_word in all_words:
             if i_word.lower() == j_word.lower():
-                username = message.from_user.username  # Ник пользователя в telegram
-                bot.send_message(chat_id='ID-ЧАТА',  # Ваш ID
-                                 text=f'<b>Было обнаружено следующее сообщение:</b> {all_words}\n<b>Имя пользователя'
-                                      f'(автора) сообщения:</b> {username}',
+                channel_id = first_result.id  # Ник пользователя в telegram
+                bot.send_message(chat_id=message.chat.id,  # Ваш ID
+                                 text=f'<b>Было обнаружено следующее сообщение:</b> {str(get_last_msg())}\n\n<b>ID '
+                                      f'канала(чата):</b> {channel_id}',
                                  parse_mode='html')  # Функция, которая пересылает сообщение
                 break
 
