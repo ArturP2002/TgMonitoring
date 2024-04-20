@@ -35,7 +35,7 @@ def monitoring(message: Message):
         for j_word in all_words:
             if i_word.lower() == j_word.lower():
                 channel_id = first_result.id  # Ник пользователя в telegram
-                bot.send_message(chat_id=message.chat.id,  # Ваш ID
+                bot.send_message(chat_id=message.chat.id,  # ID бота
                                  text=f'<b>Было обнаружено следующее сообщение:</b> {str(get_last_msg())}\n\n<b>ID '
                                       f'канала(чата):</b> {channel_id}',
                                  parse_mode='html')  # Функция, которая пересылает сообщение
